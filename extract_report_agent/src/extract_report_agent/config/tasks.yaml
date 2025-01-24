@@ -13,3 +13,11 @@ news_finder_task:
   expected_output: >
     Detailed information about only the technologies extracted by extract_agent not project, covering all relevant aspects.
   agent: news_agent
+
+blog_writer_task:
+  description: >
+    Craft compelling content on tech advancements based on the information provided by news_finder_task.
+    Ensure the content is engaging, informative, and tailored to the target audience.
+  expected_output: >
+    A well-crafted blog post on tech advancements based on the information provided by news_finder_task.
+  agent: blog_writer

@@ -31,6 +31,14 @@ class ExtractReportAgent():
 			config=self.agents_config['news_agent'],
 			verbose=True
 		)
+	
+	@agent
+	def blog_writer(self) -> Agent:
+		return Agent(
+			config=self.agents_config['blog_writer'],
+			verbose=True,
+			allow_delegation=True
+		)
 
 	# To learn more about structured task outputs, 
 	# task dependencies, and task callbacks, check out the documentation:
@@ -46,6 +54,13 @@ class ExtractReportAgent():
 		return Task(
 			config=self.tasks_config['news_finder_task'],
 			output_file='news.md'
+		)
+	
+	@task
+	def blog_writer_task(self) -> Task:
+		return Task(
+			config=self.tasks_config['blog_writer_task'],
+			output_file='blog.md'
 		)
 
 	@crew

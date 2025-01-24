@@ -8,8 +8,8 @@ extract_task:
 
 news_finder_task:
   description: >
-    Find and summarize the latest news related to {topic}.
-    Ensure the summary is concise and covers the key points.
+    Find and provide detailed information about only the technologies extracted by extract_agent not project.
+    Ensure the information is comprehensive and covers all relevant aspects.
   expected_output: >
-    A summary of the latest news related to {topic}, highlighting the key points.
+    Detailed information about only the technologies extracted by extract_agent not project, covering all relevant aspects.
   agent: news_agent

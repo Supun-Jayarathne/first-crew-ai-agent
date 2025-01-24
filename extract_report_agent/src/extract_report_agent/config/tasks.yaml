@@ -1,0 +1,15 @@
+extract_task:
+  description: >
+    Conduct a thorough research about {topic}
+    Extract project names and their related technologies.
+  expected_output: >
+    A list of project names and their related technologies extracted from {topic}
+  agent: extract_agent
+
+news_finder_task:
+  description: >
+    Find and summarize the latest news related to {topic}.
+    Ensure the summary is concise and covers the key points.
+  expected_output: >
+    A summary of the latest news related to {topic}, highlighting the key points.
+  agent: news_agent

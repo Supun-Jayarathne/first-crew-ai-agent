@@ -15,47 +15,6 @@ warnings.filterwarnings("ignore", category=SyntaxWarning, module="pysbd")
 # Replace with inputs you want to test with, it will automatically
 # interpolate any tasks and agents information
 topic = ''
-# topic = """TECHNICAL EXPERIENCE BISTEC Global  
-# Software Engineer  TAFI Project  
-# ▪ Collaborating with other programmers to design and implement 
-# features.  
-# ▪ Producing well -organized and optimized source code.  
-# Tools  & Technologies:  ReactJS,  NextJS,  ASP.NET technologies, MS SQL 
-# Server, Ant UI, HTML5, CSS, NX Console, Azure DevOps, VS Code , Visual 
-# Studio  
-# BISTEC Global  
-# Software Engineer  Design Grid  
-# ▪ Plan and organize the project, set deadlines and milestones, and 
-# manage the resources and tasks.  BUSINESS CV  
-# Commercial in confidence  
-#  BISTEC Global Services (Pvt)  Ltd. 
-# No: 14, Sir Baron Jayathilake Mawatha, Colombo 0 0100 
-# BISTEC Global Pty Ltd.  Level 2/11 York Street, Sydney, NSW 2000  
-#  Tel : (+61) 02 9052 4700 / (+9 4) 07 7768 1014  
-# Email  : info@bistecglobal.com  
-# Web  : www.bistecglobal.com  
-# ▪ Collaborating with other programmers to design and implement 
-# features.  
-# ▪ Producing well -organized and optimized source code.  
-# Tools  & Technologies:  Angular,  ASP.NET technologies, MS SQL Server, 
-# Angular Material UI, HTML5, CSS, NX Console, Azure Repository and 
-# pipeline, AWS RDS database, AWS S3, AWS Beanstalk , AWS Simple mail 
-# service, VS Cod e, Visual Studio  
-# BISTEC Global  
-# Software Engineer  BDO Chatbot  
-# ▪ Collaborating with other programmers to design and implement 
-# features.  
-# ▪ Producing well -organized and optimized source code.  
-# Tools  & Technologies:  Bot Framework, Azure DevOps, Visual Studio  
-# BISTEC Global  
-# Software Engineer  
-#  CSR Project  
-# ▪ Working with  other developers to design and implement features.  
-# ▪ Producing well -organized and optimized source code.  
-# Tools & Technologies:  Sitecore XM Cloud, Next Js, Docker,  
-# Visual Studio Code"""
-# topic =  'ReactJS, NextJS, ASP.NET technologies, MS SQL Server, Ant UI, HTML5, CSS, NX Console, Azure DevOps, VS Code, Visual Studio'
-
 
 def run():
     """
@@ -119,12 +78,10 @@ def read_cv_content(file_path):
 
 def run_crewai_app(cv_file):
     cv_content = read_cv_content(cv_file.name)
-    # Pass the CV content to the agent
-    # senior_cv_analyst.goal = f"Understand CVs and extract project names and their related technologies from the following content: {cv_content}"
-    # return cv_content 
     global topic
     topic = cv_content
-    run()
+    final_answer = ExtractReportAgent().crew().kickoff(inputs={'topic': topic})
+    return final_answer
 
 iface = gr.Interface(
     fn=run_crewai_app,
